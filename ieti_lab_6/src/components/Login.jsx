@@ -1,5 +1,5 @@
 import React from "react";
-
+var cont = 0; 
 const Login = () => {
     return(
         <div className="login">
@@ -7,13 +7,14 @@ const Login = () => {
             <form className="login-container">
                 <p><input id="email" type="email" placeholder="Email" /></p>
                 <p><input id="password" type="password" placeholder="Password" /></p>
-                <p><input type="submit" value="Log in" onClick={post()} /></p>
+                <button type="button" value="Log in" onClick= {post}  />     
             </form>
         </div>
     )
 }
 
 function post(){
+    
     const Http = new XMLHttpRequest();
     const url='http://localhost:8080/v1/auth';
     const data = {
@@ -21,16 +22,15 @@ function post(){
         password : document.getElementById("password")
     }
 
-    console.log(data.email); 
-    console.log(data.password); 
-    
     Http.open("POST", url );
     Http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    Http.send(JSON.stringify(data));
+    Http.send(data);
 
     Http.onreadystatechange = (e) => {
     console.log(Http.getAllResponseHeaders)
     }
+    window.location.replace("http://localhost:3000/task")
+
 }
 
 export default Login

@@ -1,5 +1,7 @@
 import React from 'react';
 import Login from './components/Login';
+import Task from './components/Task';
+
 import './App.css';
 import {
   BrowserRouter as Router, 
@@ -17,6 +19,8 @@ function App() {
           <Route path = "/login" element= {<Login />}>
           </Route>
           <Route path = "/" element = {<h>INICIO</h>}>
+          </Route>
+          <Route path = "/task" element= {<Task />}>
           </Route>
         </Routes>
       </div>
